@@ -33,4 +33,23 @@ public class Lock {
         currentNum %= 1000;
         currentNum %= 100;
     }
+
+    public void rotatePart2(String dir, int num){
+        if (dir.equals("L")) {
+            currentNum -= num;
+            if (currentNum < 0) {
+                zeroCount += currentNum / 100 * -1;
+                reset();
+                if (currentNum < 0) currentNum += 100;
+            }
+        }
+        else if (dir.equals("R")){
+            currentNum += num;
+            if (currentNum > 99) {
+                zeroCount += currentNum / 100;
+                reset();
+            }
+        }
+        if (currentNum == 0) zeroCount++;
+    }
 }

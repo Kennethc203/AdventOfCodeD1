@@ -17,7 +17,7 @@ public class Main {
             total = total.substring(0, 1) + " " + total.substring(1);
             dir = total.substring(0, 1);
             num = Integer.parseInt(total.substring(2));
-            santa.rotate(dir, num);
+            santa.rotatePart2(dir, num);
             System.out.println("Current Number: " + santa.getCurrentNum() + " Line Count: " + count);
         }
 

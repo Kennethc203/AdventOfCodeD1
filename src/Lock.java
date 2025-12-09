@@ -7,14 +7,13 @@ public class Lock {
             currentNum -= num;
 
             if (currentNum < 0){
-                currentNum %= 100;
+                reset();
                 if (currentNum < 0) currentNum += 100;
             }
         }
         else if(dir.equals("R")){
             currentNum += num;
-            if (currentNum > 99)
-                currentNum %= 100;
+            if (currentNum > 99) reset();
         }
         if (currentNum == 0) zeroCount++;
     }

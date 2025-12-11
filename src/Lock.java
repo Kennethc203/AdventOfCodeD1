@@ -38,7 +38,11 @@ public class Lock {
         if (dir.equals("L")) {
             currentNum -= num;
             if (currentNum < 0) {
-                zeroCount += currentNum / 100 * -1;
+                System.out.println("ZERO WAS PASSED");
+                if (currentNum < -100){
+                    zeroCount += currentNum / 100 * -1;
+                }
+                else zeroCount++;
                 reset();
                 if (currentNum < 0) currentNum += 100;
             }
@@ -46,10 +50,13 @@ public class Lock {
         else if (dir.equals("R")){
             currentNum += num;
             if (currentNum > 99) {
-                zeroCount += currentNum / 100;
+                if (currentNum > 200){
+                    zeroCount += currentNum / 100;
+                }
+                else zeroCount++;
+                System.out.println("ZERO WAS PASSED");
                 reset();
             }
         }
-        if (currentNum == 0) zeroCount++;
     }
 }

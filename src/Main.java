@@ -20,7 +20,7 @@ public class Main {
             total = total.substring(0, 1) + " " + total.substring(1);
             dir = total.substring(0, 1);
             num = Integer.parseInt(total.substring(2));
-            santa.rotatePart2(dir, num);
+            santa.rotate2(dir, num);
             zero = santa.getZeroCount();
             System.out.println("Current Number: " + santa.getCurrentNum() + " || Line Count: " + count + " || Amount Added: " + num + " || Direction: " + dir + " || Before: " + start + " || Amount of Zeros: " + zero);
         }

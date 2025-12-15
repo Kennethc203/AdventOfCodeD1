@@ -2,60 +2,69 @@ public class Lock {
     int currentNum = 50;
     int zeroCount;
 
-    public void rotate(String dir, int num){
-        if (dir.equals("L")){
+    public void rotate(String dir, int num) {
+        if (dir.equals("L")) {
             currentNum -= num;
 
-            if (currentNum < 0){
+            if (currentNum < 0) {
                 reset();
                 if (currentNum < 0) currentNum += 100;
             }
-        }
-        else if(dir.equals("R")){
+        } else if (dir.equals("R")) {
             currentNum += num;
             if (currentNum > 99) reset();
         }
         if (currentNum == 0) zeroCount++;
     }
 
-    public int getZeroCount(){
+    public int getZeroCount() {
         return zeroCount;
     }
-    public int getCurrentNum(){
+
+    public int getCurrentNum() {
         return currentNum;
     }
-    public void setCurrentNum(int i){
+
+    public void setCurrentNum(int i) {
         currentNum = i;
     }
 
-    public void reset(){
+    public void reset() {
         currentNum %= 10000;
         currentNum %= 1000;
         currentNum %= 100;
     }
 
-    public void rotatePart2(String dir, int num){
-        if (dir.equals("L")) {
-            currentNum -= num;
-            if (currentNum < 0) {
-                System.out.println("ZERO WAS PASSED");
-                if (currentNum < -100){
-                    zeroCount += currentNum / 100 * -1;
-                }
-                else zeroCount++;
-                reset();
+    public void rotateHolmer(String dir, int num) {
+        if (dir.equals("R")) {
+            while (num != 0) {
+                currentNum++;
+                currentNum %= 100;
+                if (currentNum == 0) zeroCount++;
+                num -= 1;
+            }
+        } else if (dir.equals("L")) {
+            while (num != 0) {
+                currentNum--;
                 if (currentNum < 0) currentNum += 100;
+                if (currentNum == 0) zeroCount++;
+                num -= 1;
             }
         }
-        else if (dir.equals("R")){
+    }
+
+    public void rotate2(String dir, int num) {
+        if (dir.equals("R")) {
             currentNum += num;
-            if (currentNum > 99) {
-                if (currentNum > 200){
-                    zeroCount += currentNum / 100;
-                }
-                else zeroCount++;
-                System.out.println("ZERO WAS PASSED");
+            zeroCount += num / 100;
+            if (currentNum > 99) reset();
+        }
+        if (dir.equals("L")) {
+            currentNum -= num;
+            zeroCount += Math.abs(num / 100);
+            if (currentNum < 0) {
                 reset();
+                if (currentNum < 0) currentNum += 100;
             }
         }
     }

@@ -35,7 +35,7 @@ public class Lock {
         currentNum %= 100;
     }
 
-    public void rotateHolmer(String dir, int num) {
+    public void rotate2(String dir, int num) {
         if (dir.equals("R")) {
             while (num != 0) {
                 currentNum++;
@@ -49,22 +49,6 @@ public class Lock {
                 if (currentNum < 0) currentNum += 100;
                 if (currentNum == 0) zeroCount++;
                 num -= 1;
-            }
-        }
-    }
-
-    public void rotate2(String dir, int num) {
-        if (dir.equals("R")) {
-            currentNum += num;
-            zeroCount += num / 100;
-            if (currentNum > 99) reset();
-        }
-        if (dir.equals("L")) {
-            currentNum -= num;
-            zeroCount += Math.abs(num / 100);
-            if (currentNum < 0) {
-                reset();
-                if (currentNum < 0) currentNum += 100;
             }
         }
     }
